@@ -9,6 +9,7 @@ from django.conf.urls import url, include
 from django.contrib import admin
 from django.views.generic import TemplateView
 
+# from rest_framework_jwt.views import obtain_jwt_token
 #from django.views.decorators.csrf import ensure_csrf_cookie  #use this on the login page later to protect it from csrf attacks
 
  #admin.autodiscover()
@@ -21,6 +22,11 @@ urlpatterns = [
 
     url(r'^scrumboard/', include('scrumboard.urls')),
     url(r'^docs/', include('rest_framework_docs.urls')),
+    # url(r'^user/', include('authentication.urls')),
+    url(r'^auth/', include('rest_auth.urls')),
+    url(r'^auth/registration', include('rest_auth.registration.urls')),
+    # url(r'^auth/', include('rest_framework_social_oauth2.urls')),
+    # url(r'^auth/', include('rest_framework_social_oauth2.urls', namespace='social')),
 
 #    url(r'^api/', include('api.urls')),
   #  url(r'^docs/', include('rest_framework_docs.urls')),
