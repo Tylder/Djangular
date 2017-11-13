@@ -52,7 +52,10 @@ INSTALLED_APPS = (
     'rest_auth',
     'allauth',
     'allauth.account',
-    'rest_auth.registration',
+    # 'rest_auth.registration',
+    'registration',
+    'profiles',
+    'lessons',
     # 'oauth2_provider',
     # 'social_django',
     # 'rest_framework_social_oauth2',
@@ -158,6 +161,9 @@ ACCOUNT_USERNAME_REQUIRED = False
 ACCOUNT_AUTHENTICATION_METHOD = 'email'
 ACCOUNT_AUTHENTICATED_LOGIN_REDIRECTS = False
 ACCOUNT_SIGNUP_PASSWORD_ENTER_TWICE = False
+
+EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'
+
 # Internationalization
 # https://docs.djangoproject.com/en/1.9/topics/i18n/
 

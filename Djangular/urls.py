@@ -21,10 +21,12 @@ urlpatterns = [
     url(r'^$', TemplateView.as_view(template_name="scrumboard/home.html")),
 
     url(r'^scrumboard/', include('scrumboard.urls')),
+    url(r'^profile/', include('profiles.urls')),
+    url(r'^lesson/', include('lessons.urls')),
     url(r'^docs/', include('rest_framework_docs.urls')),
     # url(r'^user/', include('authentication.urls')),
     url(r'^auth/', include('rest_auth.urls')),
-    url(r'^auth/registration', include('rest_auth.registration.urls')),
+    url(r'^auth/registration', include('registration.urls')),
     # url(r'^auth/', include('rest_framework_social_oauth2.urls')),
     # url(r'^auth/', include('rest_framework_social_oauth2.urls', namespace='social')),
 
