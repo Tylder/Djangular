@@ -24,4 +24,5 @@ class ListViewSet(ModelViewSet):
 class CardViewSet(ModelViewSet):
     queryset = Card.objects.all()
     serializer_class = CardSerializer
+    permission_classes = (AllowAny,)
     # permission_classes = (permissions.IsAuthenticated,)

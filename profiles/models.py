@@ -26,6 +26,16 @@ class BaseProfile(models.Model):
     created = models.DateTimeField(auto_now_add=True)
     updated = models.DateTimeField(auto_now=True)
 
+    def get_name_or_username(self):    # prio 1 is full name
+        name = self.user.get_full_name()
+        if name:
+            return name
+        else:
+            return self.user.username
+
+    def __str__(self):
+        return self.get_name_or_username()
+
     class Meta:
         abstract = True
 
@@ -39,13 +49,10 @@ class TeacherProfile(BaseProfile):
 
     rank = models.PositiveSmallIntegerField(default=0)
 
+    lessons_conducted = models.PositiveSmallIntegerField(default=0)
+
     objects = TeacherManager
 
-    def __str__(self):
-        if self.user.get_full_name():
-            return self.user.get_full_name()
-        else:
-            return self.user.email
 
 
     # post_save.connect(set_teacher_permission_group, sender=TeacherProfile)
@@ -64,13 +71,8 @@ class TeacherProfile(BaseProfile):
 
 class StudentProfile(BaseProfile):
 
-    lessons_taken = models.IntegerField(default=0)
+    lessons_taken = models.PositiveSmallIntegerField(default=0)
 
-    def __str__(self):
-        if self.user.get_full_name():
-            return self.user.get_full_name()
-        else:
-            return self.user.email
 
 
 @receiver(post_save, sender=TeacherProfile)
