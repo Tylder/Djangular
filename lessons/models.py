@@ -1,8 +1,8 @@
-from django.db import models
 from django.contrib.auth.models import User
+from django.db import models
 
+from profiles.models import LessonCreator
 from profiles.models import TeacherProfile, StudentProfile
-from profiles.lesson_creator.models import LessonCreator
 
 
 class BaseLesson(models.Model):
@@ -29,24 +29,34 @@ class BaseLesson(models.Model):
         on_delete=models.SET_NULL,
         related_name='created_by',
         default=None,
+        null=True,
     )
     updated_by = models.ForeignKey(
         LessonCreator,
         on_delete=models.SET_NULL,
         related_name='updated_by',
         default=None,
+        null=True,
+        blank=True,
+
     )
     second_checked_by = models.ForeignKey(
         LessonCreator,
         on_delete=models.SET_NULL,
         related_name='second_checked_by',
         default=None,
+        null=True,
+        blank=True,
+
     )
     approved_by = models.ForeignKey(
         LessonCreator,
         on_delete=models.SET_NULL,
         related_name='approved_by',
         default=None,
+        null=True,
+        blank=True,
+
     )
 
     class Meta:

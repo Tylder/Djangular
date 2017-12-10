@@ -20,6 +20,10 @@ class StudentSerializer(serializers.ModelSerializer):
         fields = '__all__'
 
 
+class LessonCreatorSerializer(serializers.ModelSerializer):
+        class Meta:
+            model = LessonCreator
+            fields = '__all__'
 # class ListSerializer(serializers.ModelSerializer):
 #     user = CardSerializer(read_only=True, many=True) # to show the cards as a property of Lists
 #

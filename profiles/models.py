@@ -74,6 +74,18 @@ class StudentProfile(BaseProfile):
     lessons_taken = models.PositiveSmallIntegerField(default=0)
 
 
+class LessonCreator(models.Model):
+
+    teacher = models.OneToOneField(TeacherProfile)
+
+    created = models.DateTimeField(auto_now_add=True)
+    updated = models.DateTimeField(auto_now=True)
+
+    # lessons_created = models.PositiveSmallIntegerField(default=0)
+
+    def __str__(self):
+        return self.teacher.get_name_or_username()
+
 
 @receiver(post_save, sender=TeacherProfile)
 def set_teacher_permission_group(sender, instance, created, **kwargs):

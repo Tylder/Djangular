@@ -10,3 +10,4 @@ from profiles.models import *
 
 admin.site.register(TeacherProfile)
 admin.site.register(StudentProfile)
+admin.site.register(LessonCreator)

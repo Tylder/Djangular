@@ -9,8 +9,8 @@ from rest_framework.response import Response
 from rest_framework.permissions import AllowAny
 from rest_framework import status
 
-from .serializers import TeacherSerializer, StudentSerializer
-from .models import TeacherProfile, StudentProfile
+from .serializers import TeacherSerializer, StudentSerializer, LessonCreatorSerializer
+from .models import TeacherProfile, StudentProfile, LessonCreator
 
 class TeacherViewSet(ModelViewSet):
 
@@ -63,3 +63,10 @@ class StudentViewSet(ModelViewSet):
 #
 #     serializer = TeacherSerializer(data=request.data)
 #     if serializer.is_valid():
+
+
+class LessonCreatorViewSet(ModelViewSet):
+
+    queryset = LessonCreator.objects.all()
+    serializer_class = LessonCreatorSerializer
+    permission_classes = (AllowAny,)

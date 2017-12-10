@@ -56,7 +56,6 @@ INSTALLED_APPS = (
     'registration',
     'profiles',
     'lessons',
-    'profiles.lesson_creator',
 
     # 'oauth2_provider',
     # 'social_django',
