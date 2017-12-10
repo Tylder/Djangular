@@ -63,7 +63,7 @@ class RegisterView(CreateAPIView):
         ''' I added this to create a Teacher or Student Profile
             when a user model is created   
         '''
-        if request.data.get('type') == 'Teacher':
+        if request.data.get('type').lower() == 'teacher':
             TeacherProfile.objects.create(user=user)
         else:
             StudentProfile.objects.create(user=user)
