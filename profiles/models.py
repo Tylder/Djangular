@@ -91,12 +91,12 @@ class LessonCreator(models.Model):
 def set_teacher_permission_group(sender, instance, created, **kwargs):
     if created:
         user = instance.user
-        group = Group.objects.get(name='Teacher')
+        group, created = Group.objects.get_or_create(name='Teacher')
         group.user_set.add(user)
 
 @receiver(post_save, sender=StudentProfile)
 def set_student_permission_group(sender, instance, created, **kwargs):
     if created:
         user = instance.user
-        group = Group.objects.get(name='Student')
+        group, created = Group.objects.get_or_create(name='Student')
         group.user_set.add(user)
